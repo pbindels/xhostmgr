@@ -1,0 +1,70 @@
+<VirtualHost *:__APACHE_LISTEN_PORT_HTTP__>
+
+    ServerName   __HOSTMGR_HOST__
+    DocumentRoot __RAILS_ROOT__/current/public
+    ErrorLog     logs/error.log
+    CustomLog    logs/access.log combined
+    RewriteEngine on
+    RewriteRule .* https://__HOSTMGR_HOST__%{REQUEST_URI}?%{QUERY_STRING} [L,R]
+
+</VirtualHost>
+
+<VirtualHost *:__APACHE_LISTEN_PORT_HTTPS__>
+
+    ServerName   __HOSTMGR_HOST__
+    DocumentRoot __RAILS_ROOT__/current/public
+    ErrorLog     logs/ssl_error.log
+    CustomLog    logs/ssl_access.log combined
+    KeepAlive	 On
+    KeepAliveTimeOut 600
+    TimeOut	600
+    RailsEnv	__RAILS_ENV__
+    # Send everything to the ssl port
+    LoadModule authnz_ldap_module         __APACHE_HOME__/modules/mod_authnz_ldap.so
+
+    <Directory "__RAILS_ROOT__/current/public">
+        Options FollowSymLinks
+        # Removing 2 lines which was preventing auth from working.
+        # AllowOverride All
+        # Require all granted
+
+        # compress text, html, javascript, css, xml:
+        AddOutputFilterByType DEFLATE text/plain
+        AddOutputFilterByType DEFLATE text/html
+        AddOutputFilterByType DEFLATE text/xml
+        AddOutputFilterByType DEFLATE text/css
+        AddOutputFilterByType DEFLATE application/xml
+        AddOutputFilterByType DEFLATE application/xhtml+xml
+        AddOutputFilterByType DEFLATE application/rss+xml
+        AddOutputFilterByType DEFLATE application/javascript
+        AddOutputFilterByType DEFLATE application/x-javascript
+
+        <FilesMatch "\.(ico|jpe?g|png|gif|js|css)$">
+            SetOutputFilter DEFLATE
+        </FilesMatch>
+
+        AuthBasicProvider      ldap
+        AuthLDAPBindDN         "cn=proxyagent,ou=profile,dc=newokl,dc=com"
+        AuthLDAPBindPassword   "p1roXy-ag3nt"
+        AuthLDAPURL            "ldap://sfo-ops-adm-01.unix.newokl.com/dc=newokl,dc=com"
+        AuthName               "OKL Branchmgr"
+        AuthType               Basic
+        Require                valid-user
+
+    </Directory>
+
+    <IfDefine MAINTENANCE>
+
+        ServerName  __HOSTMGR_HOST__ 
+        DocumentRoot __RAILS_ROOT__/current/public
+        ErrorLog     logs/error_ssl.log
+        CustomLog    logs/access_ssl.log combined
+
+        RewriteEngine on
+        RewriteCond %{REQUEST_URI}     !.(css|gif|jpg|png)$
+        RewriteCond %{SCRIPT_FILENAME} !maintenance.html
+        RewriteRule .*                 /maintenance.html [L]
+
+    </IfDefine>
+
+</VirtualHost>

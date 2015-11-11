@@ -1,0 +1,60 @@
+require 'fileutils'
+
+date = Time.now.to_i
+
+puts "__ARCHIVE_ROOT__ is archive root"
+puts "__TMP_ROOT__ is source root"
+puts "__SYNTO_ROOT__ is synto root"
+puts "__SYNC_ROOT__ is SYNC_ROOT"
+
+puts "Archiving __SYNC_ROOT__/__SYNTO_ROOT__ ..."
+
+if File.exists?("__SYNC_ROOT__/__SYNTO_ROOT__")
+  Dir.chdir ("__SYNC_ROOT__/__SYNTO_ROOT__")
+  FileUtils.mkdir_p("__ARCHIVE_ROOT__") if (! File.exists?("__ARCHIVE_ROOT__"))
+  #`tar cvzf __ARCHIVE_ROOT__/hostmgr_#{date}.tgz tftpboot etc var`
+else
+  puts "No Archiving to be done.  __SYNC_ROOT__/__SYNTO_ROOT__ does not exist yet."
+end
+
+puts "Running Sync...\nFrom: __TMP_ROOT__/data \nTo: __SYNC_ROOT__"
+puts "#{Time.now} Changing Directory To: #{File.dirname("__TMP_ROOT__/data")}"
+Dir.chdir File.dirname("__TMP_ROOT__/data")
+
+puts "#{Time.now} Diff Source Files to Destination Files:"
+output=`diff -r __TMP_ROOT__/data __SYNC_ROOT__/#{File.basename("__TMP_ROOT__/data")}`
+puts output
+
+#rsync -nv --no-implied-dirs -rltODH -R data /
+#`rsync -nv --no-implied-dirs -rltODH -R #{File.basename("__TMP_ROOT__/data")} __SYNC_ROOT__`
+puts "#{Time.now} Current working directory: #{Dir.pwd}"
+puts "syncing  #{File.basename("__TMP_ROOT__/data")}  _to_  __SYNC_ROOT__"
+`/usr/bin/sudo /usr/bin/rsync -v --no-implied-dirs --inplace -rltODH -R #{File.basename("__TMP_ROOT__/data")} __SYNC_ROOT__`
+
+puts "Running Link Manager"
+system("/usr/bin/sudo /opt/synto/sbin/linkmgr2 /data/synto/roots/common /data/synto/roots/linux")
+system("/usr/bin/sudo /opt/synto/sbin/linkmgr2 /data/synto/roots/common /data/synto/roots/solaris")
+
+puts "#{Time.now} Commit changes in /data/synto"
+#`hg_commit.sh`
+puts "#{Time.now} Commit changes in /"
+Dir.chdir "/data/synto"
+
+val = `/usr/local/bin/hg st|/bin/grep -v .swp |/bin/egrep '^?|^M'`
+if val != ""
+  puts "Files to be added and commmitted are:\n #{val}"
+  system("/usr/bin/sudo /usr/local/bin/hg add . ")
+  system("/usr/bin/sudo /usr/local/bin/hg commit -m \"Changes in data/synto folder auto commit via hostmgr\" -u \"oklrelease\"")
+else
+  puts "No files to be committed"
+end
+
+#`/usr/bin/sudo /usr/local/bin/hg add .`
+#system("/usr/bin/sudo /usr/local/bin/hg commit -m \"Changes in data/synto folder auto commit via hostmgr\" -u \"oklrelease\"")
+
+#/usr/local/bin/hg add .
+#/usr/local/bin/hg commit -m "Auto commit via hostmgr" -u "oklrelease"
+
+# Currently the push will be done manually, per BCH & Justin
+#puts "Pushing out changes with cfagent -qK"
+#`/user/sbin/cfagent -qK`

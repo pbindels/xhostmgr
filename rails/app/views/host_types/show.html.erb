@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @host_type.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @host_type.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_host_type_path(@host_type) %> |
+<%= link_to 'Back', host_types_path %>

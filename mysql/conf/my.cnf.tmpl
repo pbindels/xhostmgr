@@ -1,0 +1,81 @@
+[mysql]
+socket                         = /okl/hostmgr/prod/mysql/tmp/run/mysqld.sock
+password                       = 'mysqladmin'
+
+[mysqld]
+basedir                        = /usr
+back_log                       = 1024
+binlog-format                  = STATEMENT
+bulk_insert_buffer_size        = 96M
+character-set-server           = utf8
+
+init-file                      = /okl/hostmgr/prod/mysql/conf/init_file.sql
+
+datadir                        = /okl/hostmgr/prod/mysql/data/
+default_storage_engine         = InnoDB
+expire_logs_days               = 1
+#innodb_adaptive_hash_index_partitions = 4
+#innodb_blocking_buffer_pool_restore = 1
+#innodb_buffer_pool_restore_at_startup = 3600
+#innodb_buffer_pool_instances   = 1
+#innodb_buffer_pool_size        = 256m
+#innodb_checksums               = 0
+#innodb_data_home_dir           = /okl/hostmgr/prod/mysql/data
+#innodb_doublewrite             = 0
+#innodb_file_format             = Barracuda
+#innodb_file_format_max         = Barracuda
+#innodb_file_per_table          = 1
+#innodb_flush_log_at_trx_commit = 2
+#innodb_flush_method            = O_DIRECT
+#innodb_ibuf_accel_rate         = 100
+#innodb_ibuf_active_contract    = 1
+#innodb_ibuf_max_size           = 128m
+#innodb_io_capacity             = 200
+##innodb_lazy_drop_table         = 1
+#innodb_lock_wait_timeout       = 50
+#innodb_log_buffer_size         = 64M
+#innodb_log_files_in_group      = 2
+#innodb_log_file_size           = 64M
+#innodb_log_group_home_dir      = /okl/hostmgr/prod/mysql/data
+#innodb_random_read_ahead       = 1
+#innodb_read_ahead              = both
+#innodb_read_ahead_threshold    = 16
+#innodb_read_io_threads         = 3
+#innodb_stats_update_need_lock  = 0
+#innodb_thread_concurrency      = 52
+#innodb_write_io_threads        = 3
+#key_buffer_size                = 64M
+log-bin                        = /okl/hostmgr/prod/mysql/binlog/binlog
+log_error                      = /okl/hostmgr/prod/mysql/logs/mysqld.log
+#log-slave-updates              = 1
+lower_case_table_names         = 1
+max_allowed_packet             = 128M
+max_connect_errors             = 1000000
+max_connections                = 500
+max_heap_table_size            = 128m
+myisam_max_sort_file_size      = 64M
+myisam_recover                 = FORCE,BACKUP
+myisam_sort_buffer_size        = 132M
+open_files_limit               = 65535
+pid_file                       = /okl/hostmgr/prod/mysql/tmp/run/mysqld.pid
+port                           = 18030
+query_cache_type               = 0
+query_cache_size               = 0
+read_buffer_size               = 256K
+read_rnd_buffer_size           = 256K
+skip-innodb_adaptive_hash_index
+slow-query-log                 = 0
+slow-query-log-file            = /okl/hostmgr/prod/mysql/logs/slow.log
+server-id                      = 1300
+socket                         = /okl/hostmgr/prod/mysql/tmp/run/mysqld.sock
+sync_binlog                    = 1
+table_definition_cache         = 4096
+table_open_cache               = 2048
+thread_cache_size              = 96
+tmp_table_size                 = 128m
+tmpdir                         = /okl/hostmgr/prod/mysql/tmp
+user                           = okluser
+
+
+
+

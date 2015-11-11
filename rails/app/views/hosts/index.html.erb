@@ -1,0 +1,96 @@
+
+<b><%= flash[:notice] %></b><br>
+
+<h1>Listing hosts</h1>
+
+
+<%= form_tag("/hosts/index", method: "get") do %>
+    <div class ="field9999">
+      <b>Filter:</b>&nbsp&nbsp&nbsp&nbsp&nbsp
+      <%= select_tag(:attribute, options_for_select(Host.columns.map{|c| c.name}), {:prompt => "Select Attribute", :class => "text_box_label900"})%> &nbsp&nbsp like &nbsp&nbsp
+      <%= text_field_tag :q %>   &nbsp&nbsp
+      <%= submit_tag("Search") %>
+    </div>
+<% end %>
+
+<table cellpadding=10 border="1" class="imagetable">
+<!--<table class="table-hover table-bordered table-condensed">
+<table  border="1" cellpadding="7" > -->
+  <tr>
+    <th><%=sortable "id", "ID" %></th>
+    <th><%=sortable "name", "Host Name" %></th>
+    <th><%=sortable "ipaddr", "IP Address" %></th>
+    <th><%=sortable "macaddr", "Mac Address" %></th>
+    <th><%=sortable "location", "Location" %></th>
+    <th><%=sortable "con_name", "Console Name" %></th>
+    <th><%=sortable "con_ipaddr", "Console IP Address" %></th>
+    <th><%=sortable "con_macaddr", "Console Mac Address" %></th>
+    <th><%=sortable "user_groups", "User Groups" %></th>
+    <th><%=sortable "host_groups", "Host Groups" %></th>
+    <th><%=sortable "environment", "Env" %></th>
+    <th><%=sortable "hostrole", "Host Role" %></th>
+    <th><%=sortable "product", "Product" %></th>
+    <th><%=sortable "os_version", "OS Version" %></th>
+    <th><%=sortable "name_server", "Name Server" %></th>
+    <th><%=sortable "boot_server", "Boot Server" %></th>
+    <th><%=sortable "gateway", "Gateway" %></th>
+    <th><%=sortable "netmask", "Netmask" %></th>
+    <th><%=sortable "synto", "Synto" %></th>
+    <th><%=sortable "ks_regen", "Ks Regen" %></th>
+    <th><%=sortable "is_ipmi", "IPMI" %></th>
+    <th><%=sortable "root_disk", "Root disk" %></th>
+    <th><%=sortable "serial_number", "Serial Number" %></th>
+    <th><%=sortable "host_type", "Host Type" %></th>
+    <th><%=sortable "esx_host", "ESX Host" %></th>
+    <th><%=sortable "physical_location", "Physical Location" %></th>
+    <th><%=sortable "disabled", "Disabled" %></th>
+    <% if @admins.include?(@current_user) %>
+      <th>Show </th>
+      <th>Edit</th>
+      <th>Destroy</th>
+    <% end %>
+  </tr>
+
+
+<% @hosts.each do |host| %>
+  <tr class="node <%=cycle("odd", "even")%>">
+    <td><%= host.id %></td>
+    <td><%= host.name %></td>
+    <td><%= host.ipaddr %></td>
+    <td><%= host.macaddr %></td>
+    <td><%= host.location %></td>
+    <td><%= host.con_name %></td>
+    <td><%= host.con_ipaddr %></td>
+    <td><%= host.con_macaddr %></td>
+    <td><%= host.user_groups %></td>
+    <td><%= host.host_groups %></td>
+    <td><%= host.environment %></td>
+    <td><%= host.hostrole %></td>
+    <td><%= host.product %></td>
+    <td><%= host.os_version%></td>
+    <td><%= host.name_server%></td>
+    <td><%= host.boot_server%></td>
+    <td><%= host.gateway%></td>
+    <td><%= host.netmask%></td>
+    <td><%= host.synto%></td>
+    <td><%= host.ks_regen%></td>
+    <td><%= host.is_ipmi%></td>
+    <td><%= host.root_disk%></td>
+    <td><%= host.serial_number %></td>
+    <td><%= host.host_type %></td>
+    <td><%= host.esx_host %></td>
+    <td><%= host.physical_location %></td>
+    <td><%= host.disabled %></td>
+    <% if @admins.include?(@current_user) %>
+      <td><%= link_to 'Show', host , {:style => 'color:#2E64FE'}%></td>
+      <td><%= link_to 'Edit', edit_host_path(host), {:style => 'color:#2E64FE'} %></td>
+      <td><%= link_to 'Destroy', host, method: :delete, html_options: { :style => 'color:#2E64FE' }, data: {confirm: "Are you sure you want to delete:  #{host.name}?" }   %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+<br>
+
+

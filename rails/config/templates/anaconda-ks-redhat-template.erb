@@ -1,0 +1,74 @@
+install
+text
+reboot
+
+zerombr yes
+clearpart --all --initlabel
+part /boot --fstype=<%=@fs_type_boot%> --size=1024 <%=@root_disk%>
+part pv.1 --size=1024 --grow <%=@root_disk%>
+volgroup VolGroup00 --pesize=32768 pv.1
+logvol / --fstype=<%=@fs_type_root%> --name=LogVol00 --vgname=VolGroup00 --size=1024 --grow
+logvol swap --fstype=swap --name=LogVol01 --vgname=VolGroup00 --size=2048
+
+bootloader --location=mbr
+
+firewall --disabled
+selinux --permissive
+
+timezone --utc UTC
+
+keyboard us
+lang en_US.UTF-8
+network --bootproto=static --ip=<%=@ipaddr%> --netmask=<%=@netmask%> --gateway=<%=@gateipaddr%> --nameserver=<%=@nameserver%> --hostname=<%=@hostn%>
+authconfig --enableshadow --enablemd5
+rootpw --iscrypted GtjFh6ePtV9iE
+firewall --disabled 
+#nfs --server=sac-ops-san-03.unix.newokl.com --dir=/data/pkg/ossrc/Linux-2.6-i686/<%=@osv%>
+url --url=http://<%=@boothost%>/ossrc/Linux-2.6-i686/<%=@osv%>/dir
+
+driverdisk --source=http://<%=@boothost%>/ossrc/Linux-2.6-i686/<%=@osv%>/driverdisks/aacraid-1.2.1.30200-kernel2.6.18-348.el5-x86_64-dd.img
+
+
+%packages  --ignoremissing
+%include /tmp/ks-packages-rhel-6.cfg
+
+%pre
+exec 1>/root/pre-install.log
+exec 2>&1
+pwd
+df -k
+#sleep 60
+wget --directory-prefix=/tmp  http://sfo-ops-adm-01.unix.newokl.com/netinstall/etc/ks-packages-rhel-6.cfg
+
+%post
+#rpm -i http://sac-ops-adm-01.unix.newokl.com/ossrc/Linux-2.6-i686/RHEL-5-rpms/aacraid-1.2.1.30200-dkms.noarch.rpm
+#rpm -i http://sac-ops-adm-01.unix.newokl.com/ossrc/Linux-2.6-i686/RHEL-5-rpms/dkms-2.2.0.3-1.noarch.rpm
+
+set -x
+exec 1>/root/post-install.log
+exec 2>&1
+echo --- BEGIN anaconda post
+date
+chkconfig xend off
+chkconfig xendomains off
+if [ -f /etc/init.d/portmap ] ; then
+    /etc/init.d/portmap start
+elif [ -f /etc/init.d/rpcbind ] ; then
+    /etc/init.d/rpcbind start
+fi
+/etc/init.d/nfslock start
+/etc/init.d/rpcidmapd status
+/etc/init.d/rpcidmapd start
+/etc/init.d/sshd start
+mkdir -p /mnt/etc/synto/netinstall
+mount <%=@boothost%>:/etc/synto/netinstall /mnt/etc/synto/netinstall
+cd /mnt/etc/synto/netinstall/roots/Linux
+rsync -v -aH . /
+cd /
+ln -s /etc/synto/initrc.d/_postinstmgr /etc/rc.d/rc3.d/S75_postinstmgr
+echo "H_BS_MASTER_CF=<%=@boothost%>" > /etc/postinstmgr.conf
+echo "H_BS_MASTER_PKG=<%=@boothost%>" >> /etc/postinstmgr.conf
+echo "H_YUM=<%=@boothost%>" >> /etc/postinstmgr.conf
+umount /mnt/etc/synto/netinstall
+date
+echo --- END anaconda post

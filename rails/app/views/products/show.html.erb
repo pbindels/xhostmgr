@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @product.name %>
+</p>
+
+<%= link_to 'Edit Product', edit_product_path(@product) %> |
+<%= link_to 'Show Products', products_path %>   |
+<%=  link_to 'Add Host', new_host_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css"
+      xmlns="http://www.w3.org/1999/html">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+  <html>
+  <head>
+<title>Hostmgr</title>
+
+
+
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<table>
+  <tr>
+    <td><h2>Hostmgr</h2></td>
+    <td><img src='/assets/logo.jpg' hspace='1' vspace='2' border='0' alt='One Kings Lane'></td>
+    <td><h2>User:  <%= @current_user%></h2> </td>
+    <td>
+</table>
+
+<table>
+  <tr>
+    <td>
+      <% all_tasks = Rails.configuration.my_scope.tasks %>
+      <% if @admins.include?(@current_user)%>
+          <% tasks = all_tasks.values.flatten%>
+      <% else %>
+          <% tasks = all_tasks["user"]%>
+      <% end %>
+
+      <%= form_tag('/hosts/do_task') do  %>
+          <div class="field9">
+            <%= label_tag :task_name, "" %>
+            <%= select_tag(:task_name, options_for_select(tasks), {:prompt => "Select a New Task", :class => "text_box_label"}) %>
+          </div>
+      <%end%>
+    </td>
+    <td>&nbsp&nbsp</td>
+    </tr>
+    <tr>
+      <!--
+      <td>
+        <%=  link_to 'Show All Hosts', hosts_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+      | <%=  link_to 'Show Products', products_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+      | <%=  link_to 'Show Roles', roles_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+      | <%=  link_to 'Show Host Types', host_types_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+      <% if @admins.include?(@current_user) %>
+          | <%=  link_to 'Add Host', new_host_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+          | <%=  link_to 'Add Product', new_product_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+          | <%=  link_to 'Add Role', new_role_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+          | <%=  link_to 'Add Host Type', new_host_type_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+      <% end %>
+    </td> -->
+  </tr>
+</table>
+
+<%= yield %>
+
+<%=  link_to 'Show Hosts', hosts_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+| <%=  link_to 'Show Products', products_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+| <%=  link_to 'Show Roles', roles_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+| <%=  link_to 'Show Host Types', host_types_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+<% if @admins.include?(@current_user) %>
+    | <%=  link_to 'Add Host', new_host_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+    | <%=  link_to 'Add Product', new_product_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+    | <%=  link_to 'Add Role', new_role_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+    | <%=  link_to 'Add Host Type', new_host_type_path, {:style => 'color:#2E64FE;background-color:#F8FBEF'} %>
+<% end %>
+
+<br>
+<br>
+
+</body>
+</html>

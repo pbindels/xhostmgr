@@ -1,0 +1,235 @@
+DEFAULTS: &DEFAULTS
+    all_locations: [pal, sfo, sac, ash, nyc]
+    location_region_map:
+      "sfo":  sfo
+      "sac":  sac
+      "sac1": sac
+      "ash":  ash
+      "nyc":  nyc
+      "eng":  sac
+      "corp": sac
+      "perf": sac
+      "corp1": sfo
+      "sys":  sac
+      "paleng":  pal
+      "palperf": pal
+      "palsys":  pal
+      "palprod": pal
+    ip_location_map:
+      "10.110":  sfo
+      "10.111":  sfo
+      "10.120":  sac
+      "10.140":  sac1
+      "10.141":  sac1
+      "10.142":  palprod
+      "10.130":  ash
+      "10.30":   nyc
+      "10.68":   eng
+      "10.70":   paleng
+      "10.88":   corp
+      "10.64":   perf
+      "10.66":   palperf
+      "10.32":   corp1
+      "10.72":   sys
+      "10.74":   palsys
+    locations:
+      sac:   l_us_ca_sac
+      sac1:  l_us_ca_sac_prod1
+      ash:   l_us_va_ash
+      nyc:   l_us_ny_nyc
+      pal:   l_us_ca_pal
+      eng:   l_us_ca_sac_eng
+      corp:  l_us_ca_sac_corp
+      perf:  l_us_ca_sac_perf
+      corp1: l_us_ca_sfo_corp1
+      sys:   l_us_ca_sac_sys
+      palprod: l_us_ca_pal_prod1
+      paleng: l_us_ca_pal_eng
+      palsys: l_us_ca_pal_sys
+      palperf: l_us_ca_pal_perf
+    os_versions:
+      CentOS-5: "CentOS-5-x86_64"
+      CentOS-6: "CentOS-6-x86_64"
+      CentOS-7: "CentOS-7-x86_64"
+      RHEL-5:   "RHEL-5-x86_64"
+      RHEL-6:   "RHEL-6-x86_64"
+      RHEL-7:   "RHEL-7-x86_64"
+      Debian:   "Debian-6-amd64"
+    boot_hosts:
+      sfo:  "sfo-ops-adm-01.unix.newokl.com"
+      sac:  "sac-ops-adm-01.unix.newokl.com"
+      nyc:  "nyc-ops-adm-01.unix.newokl.com"
+      sac1: "sac-prod1-ops-adm-01.unix.newokl.com"
+      ash:  "NA"
+      eng:  "sac-eng-ops-adm-01.unix.newokl.com"
+      corp: "sac-corp-ops-adm-01.unix.newokl.com"
+      perf: "sac-perf-ops-adm-01.unix.newokl.com"
+      corp1: "sac-corp-ops-adm-01.unix.newokl.com"
+      sys:   "sac-sys-ops-adm-01.unix.newokl.com"
+      paleng: "pal-eng-ops-adm-01.unix.newokl.com"
+      palperf: "pal-perf-ops-adm-01.unix.newokl.com"
+      palsys: "pal-sys-ops-adm-01.unix.newokl.com"
+      palprod: "pal-prod1-ops-adm-01.unix.newokl.com"
+    view_loc_map:
+      corp: [sfo]
+      int:  [sac, sac1, eng, corp, perf, corp1, sys, paleng, palsys, palperf, palprod]
+      ash:  [ash]
+      nyc:  [nyc]
+    name_servers:
+      sfo:       "10.110.2.61"
+      sac:       "10.120.2.61"
+      sac1:      "10.140.96.61"
+      palprod:   "10.142.96.61"
+      ash:       "10.130.2.61"
+      nyc:       "10.30.0.51"
+      eng:       "10.68.96.61"
+      paleng:    "10.70.96.61"
+      corp:      "10.88.0.61"
+      perf:      "10.64.96.61"
+      palperf:   "10.66.96.61"
+      corp1:     "10.32.0.61"
+      sys:       "10.72.96.61"
+      palsys:    "10.74.96.61"
+    net_masks:
+      sfo:     "255.255.255.0"
+      sac:     "255.255.255.0"
+      ash:     "255.255.255.0"
+      nyc:     "255.255.252.0"
+      sac1:    "255.255.252.0"
+      eng:     "255.255.252.0"
+      paleng:  "255.255.252.0"
+      corp:    "255.255.252.0"
+      palprod: "255.255.252.0"
+      perf:    "255.255.252.0"
+      palperf: "255.255.252.0"
+      corp1:   "255.255.252.0"
+      sys:     "255.255.252.0"
+      palsys:  "255.255.252.0"
+    ip_gate_map:
+      "10.110.11.0":  "10.110.11.254"
+      "10.110.2.0":   "10.110.2.1"
+      "10.110.3.0":   "10.110.3.1"
+      "10.111.0.0":   "10.111.0.1"
+      "10.120.2.0":   "10.120.2.1"
+      "10.120.3.0":   "10.120.3.1"
+      "10.130.2.0":   "10.130.2.1"
+      "10.130.3.0":   "10.130.3.1"
+      "10.30.0.0" :   "10.30.0.1"
+      "10.140.0.0":   "10.140.0.1"
+      "10.140.32.0":  "10.140.32.1"
+      "10.140.64.0":  "10.140.64.1"
+      "10.140.96.0":  "10.140.96.1"
+      "10.140.128.0": "10.140.128.1"
+      "10.140.200.0": "10.140.200.1"
+      "10.141.0.0":   "10.141.0.1"
+      "10.142.0.0":   "10.142.0.1"
+      "10.142.32.0":  "10.142.32.1"
+      "10.142.64.0":  "10.142.64.1"
+      "10.142.96.0":  "10.142.96.1"
+      "10.142.128.0": "10.142.128.1"
+      "10.142.200.0": "10.142.200.1"
+      "10.68.0.0":    "10.68.0.1"
+      "10.68.32.0":   "10.68.32.1"
+      "10.68.64.0":   "10.68.64.1"
+      "10.68.96.0":   "10.68.96.1"
+      "10.68.160.0":  "10.68.160.1"
+      "10.68.200.0":  "10.68.200.1"
+      "10.68.241.0":  "10.68.241.1"
+      "10.70.0.0":    "10.70.0.1"
+      "10.70.32.0":   "10.70.32.1"
+      "10.70.64.0":   "10.70.64.1"
+      "10.70.96.0":   "10.70.96.1"
+      "10.70.160.0":  "10.70.160.1"
+      "10.70.200.0":  "10.70.200.1"
+      "10.88.0.0":    "10.88.0.1"
+      "10.88.0.0":    "10.88.0.1"
+      "10.88.4.0":    "10.88.4.1"
+      "10.88.6.0":    "10.88.6.1"
+      "10.64.0.0":    "10.64.0.1"
+      "10.64.32.0":   "10.64.32.1"
+      "10.64.64.0":   "10.64.64.1"
+      "10.64.96.0":   "10.64.96.1"
+      "10.66.0.0":    "10.66.0.1"
+      "10.66.32.0":   "10.66.32.1"
+      "10.66.64.0":   "10.66.64.1"
+      "10.66.96.0":   "10.66.96.1"
+      "10.32.0.0":    "10.32.0.1"
+      "10.32.4.0":    "10.32.4.1"
+      "10.32.8.0":    "10.32.8.1"
+      "10.32.12.0":   "10.32.12.1"
+      "10.32.16.0":   "10.32.16.1"
+      "10.32.20.0":   "10.32.20.1"
+      "10.32.24.0":   "10.32.24.1"
+      "10.32.28.0":   "10.32.28.1"
+      "10.72.0.0":    "10.72.0.1"
+      "10.72.32.0":   "10.72.32.1"
+      "10.72.64.0":   "10.72.64.1"
+      "10.72.96.0":   "10.72.96.1"
+      "10.74.0.0":    "10.74.0.1"
+      "10.74.32.0":   "10.74.32.1"
+      "10.74.64.0":   "10.74.64.1"
+      "10.74.96.0":   "10.74.96.1"
+
+    icinga_repos:
+      "sfo":  "sfo-ops-icinga"
+      "sac":  "sac-ops-icinga"
+
+    user_groups: [ all, root, sysadmin, priv, dev, okl, dba, oncall, pim, qa, load, product, contractors, raybeam, datasci, envista, tools, halley, looker, dataeng, dse ]
+    host_groups: [ priv, prod, tools, tools-web, db, bi, rel, int, pim, qa, load, halley, dataeng, datasci, cloud, rsq, dev-root, nexus-prod, elysium-prod, catalog-prod, inventory-prod, mrktapp-prod, neadwerx, dse, bi-dataeng ]
+    host_roles: [ web, debian, centos, fmq, db, adm, spare, hbase, data, bld, mq, drvm, app, drv, dw, xen, papp, pdb, pweb, biapp, esx, nc, vgr, san, bayes, bidb, biweb, dbdr, dp, dsdb, dsr, dslb, dsredis, dsweb, hadoop, hdb, hweb, lb, nas, cache, api, deploy, gen, vctr]
+    products: [ vrt, pim, color, splnk, srch, stor, ops, pp, ds, ha, bi, cat, product, nexus, vend, mrkt, rel, sre, invent ]
+    environments: [ stg, stg1, dev, int, test, load, load01, ops, perf, perf01, prod, prod1, sand, qa, rel, cloud, srvroom, corp, eng, pers, cons, entr, mobl, arch, mail, qe, perf02, deng, sys, dba  ]
+    location_files: [ l_us_ca_sac, l_us_ca_pal_prod1, l_us_va_ash, l_us_ca_sac_prod1 ]
+    dns_zones: [ corp, office, int, ext, ash ]
+    latest_os: "CentOS-5.9-x86_64"
+
+
+    exclude_ips: [0,1,2,3,4,5,6,7,8,9,251,252,253,254,255]
+
+    tasks:
+      user:  [Show Hosts, Show Products, Show Roles, Show Host Types ]
+      admin: [Add Host, Add Product, Add Role, Add Host Type]
+    
+    tasks_orig: [Create a New Branch, Delete an Existing Branch, Find a Branch Across Repos, List Branches for a Project,  List Branches For a Specific Repo]
+    
+    dep_envs:
+      load: [load01, load02, load03, load04, load05]
+      int: [int01, int02, int03, int04, int05, int06, int07, int08, int09, int10]
+      qa: [qa01, qa02, qa03, qa04, qa05, qa06, qa07, qa08, qa09, qa10]
+
+    env_instances: [ 1, 2, 3, 4, 5 ]
+
+    qdeploy_services: [ rails, apache, memcached, redis, resque, mysql ]
+    admins: [ pbindels, shu, justin, bchill, jelliott, dnguyen, jthorpe, rschroder, leepatrick, lmcintire, trivera, pestrada, hlee, kblount, anewman, gmarone, afioravanti, jmonroe, bevans, rtzeng, admin]
+    create_timeout: '20'
+    vports:
+      TCP:   2
+      UDP:   3
+      FTP:   6
+      HTTP:  11
+      HTTPS: 12
+
+    rails_root:         "__RAILS_ROOT__/current"
+    site_root:          "__HOSTMGR_SERVICE_DOMAIN__"
+    sync_root:          "__SYNC_ROOT__"
+    tmp_root:           "__RAILS_ROOT__/shared/tmp/hostmgr"
+    archive_root:       "__RAILS_ROOT__/shared/archive"
+    config_root:        "__RAILS_ROOT__/current/config"
+    ks_config_root:    "/etc/synto/netinstall/etc"
+    log_root:           "__RAILS_ROOT__/current/log"
+    synto_root:         "__SYNTO_ROOT__"
+    hostmgr_root:       "__HOSTMGR_OUTPUT_ROOT__"
+    live_root:          "__HOSTMGR_LIVE_ROOT__"
+    hosts_file:         "__RAILS_ROOT__/current/log/hosts"
+    hosts_tmpl_file:    "__RAILS_ROOT__/current/log/hosts.tmpl"
+    zone_dir:           "__RAILS_ROOT__/current/log/zone_dir"
+    netgroup_groups:    [ host-to-role, triples, groups ]
+    notification_list:  [pbindels@onekingslane.com, netops@onekingslane.com]
+
+
+
+test:
+  <<: *DEFAULTS
+
+production:
+  <<: *DEFAULTS

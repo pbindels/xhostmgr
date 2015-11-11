@@ -1,0 +1,54 @@
+$INCLUDE db-ttl
+@			IN SOA ns1.newokl.com. hostmaster.newokl.com. (
+				201307187;      serial
+				3600;		refresh,1hr
+				1800;           retry,30min
+				604801; expire,40days
+				120 );  neg. cache,2 min.
+;#
+;# common records
+;#
+$INCLUDE db-domain-ip:ext
+$INCLUDE db-domain:ext
+$INCLUDE db-ns:ext
+;#
+;# MX records
+;#
+@			IN MX	10 newokl.com.s7a1.psmtp.com.
+			IN MX 	20 newokl.com.s7a2.psmtp.com.
+			IN MX 	30 newokl.com.s7b1.psmtp.com.
+			IN MX 	40 newokl.com.s7b2.psmtp.com.
+;
+; localhost record
+;
+localhost               IN A            127.0.0.1
+;
+; include common zone data (common to all views)
+;
+$INCLUDE db-newokl.com
+;
+; additional records
+;
+ns1                     IN A            173.254.183.37
+ns2                     IN A            173.254.183.38
+; 
+
+search                  IN A            173.254.183.48
+
+;
+; Unix Hosts
+;
+
+; sac hosts
+
+$INCLUDE db-newokl.com+int-public   
+
+; sfo hosts
+
+$INCLUDE db-newokl.com+corp-public   
+
+$ORIGIN newokl.com.
+
+; ec2 hosts
+
+$INCLUDE db-newokl.com+ec2-public

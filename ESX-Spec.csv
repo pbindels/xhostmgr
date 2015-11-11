@@ -1,0 +1,12 @@
+sac-eng-ops-esx-14 (OPS01),,,,,,,,,
+Host,IP address,Cent0S,CPU,RAM,Disk,Console,UserGroup,HostGroup,Network
+sac-ops-deploy-web-01,10.72.32.25,5,8,8,100,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jenkins-master-01,10.72.32.26,5,8,8,150,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jenkins-master-02,10.72.32.27,6,8,8,150,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-branchmgr-app-01,10.72.32.28,6,4,4,100,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jenkins-slave-01,10.72.32.29,5,12,12,250,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jenkins-slave-02,10.72.32.35,6,12,12,250,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jenkins-qa-01,10.72.32.36,6,12,12,250,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-hostmgr-app-01,10.72.32.37,5,4,4,100,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-jira-app-01,10.72.32.38,6,4,4,150,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app
+sac-ops-git-app-01,10.72.32.39,6,4,4,100,sac-eng-ops-esx-14,dev:sysadmin,dev-root,app

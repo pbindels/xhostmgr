@@ -1,0 +1,259 @@
+#!/bin/bash
+#
+# Name:         run_apache.bash
+#
+# Description:  This is the startup script for KING apache.
+#               With this script apache can only be started
+#               with ssl enabled.
+
+
+#######################
+### Global variables
+###
+
+APACHE_HOME=__APACHE_HOME__
+APACHE_ROOT=__APACHE_ROOT__
+ENV=__ENV_NAME__
+NODE_HOME=__NODE_HOME__
+PATH=$PATH:/usr/ucb
+CMND=$0
+ARGV="$@"
+USER=`whoami`
+RUNAS=__APACHE_RUNAS__
+HTTPD_CONF=$APACHE_ROOT/conf/httpd.conf
+HTTPD="$APACHE_HOME/bin/httpd -f $HTTPD_CONF"
+ULIMIT_MAX_FILES="ulimit -S -n `ulimit -H -n`"
+PROJECT_NAME=__APP_NAME__
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH ; export LD_LIBRARY_PATH
+ARCH=`uname`
+MAX_SHUTDOWN_TIME=60
+export APPLICATION_ENV=__APPLICATION_ENV__
+export PATH=$NODE_HOME/bin:$PATH
+
+umask 002
+
+############
+### Usage
+###
+
+function usage {
+
+     echo ""
+     echo "USAGE: run_apache.bash <stop|start|restart|graceful|maintenance|preupgrade|protect|configtest>"
+     echo ""
+     exit 2
+
+}
+
+##################
+### Error check
+###
+
+function check_usage {
+
+     # check user
+#     case $USER in
+#
+#          $RUNAS ) ;;
+#          root )   su $RUNAS -c "$CMND $ARGV"
+#                   exit ;;
+#          * )      echo "ERROR: this script can only be run as the root and wworks users!"
+#                   exit 2 ;;
+#     esac
+
+     [[ -z "$ULIMIT_MAX_FILES" ]] && $ULIMIT_MAX_FILES
+     [[ -z "$ARGV" ]] && ARGV="-h"
+
+}
+
+
+#####################
+### Set ps command
+###
+
+function set_ps_cmd {
+
+     if [ $ARCH == "SunOS" ] ; then
+
+          PS="/usr/ucb/ps -auxwww"
+     else
+          PS="ps -ef"
+     fi
+
+}
+
+
+######################
+### Get apache pids
+###
+
+function get_pids {
+
+     PIDS=`$PS | grep $HTTPD_CONF | grep -v grep | awk '{print $2}'`
+
+     if [ -f $APACHE_ROOT/tmp/run/httpd.pid ] ; then
+
+          PID_FILE_PID=`cat -s $APACHE_ROOT/tmp/run/httpd.pid`
+          PIDP=`$PS | grep $HTTPD_CONF | awk '{print $2}' | grep "$PID_FILE_PID"`
+     fi
+}
+
+
+#########################
+### Stop/Start/Restart
+###
+
+function stop_apache {
+
+     get_pids {}
+
+     if [ -n "$PIDP" ] ; then
+
+          echo "Apache-$PROJECT_NAME: Shutting Down - $PIDP"
+          $HTTPD -k stop
+          sleep 5
+          PID=true
+
+     elif [ -n "$PIDS" ] ; then
+
+          echo "Apache-$PROJECT_NAME: Shutting Down"
+          kill -9 $PIDS
+          sleep 5
+          PID=true
+     else
+
+          echo "Apache-$PROJECT_NAME: Shutting Down"
+          echo "Apache-$PROJECT_NAME: Not Running"
+          PID=false
+     fi
+
+     x=0
+     while [ $PID = true ] ; do
+
+          get_pids {}
+
+          if [ -n "$PIDS" ] ; then
+
+               echo "Apache-$PROJECT_NAME: Failed to shudown apache cleanly"
+               echo "Apache-$PROJECT_NAME: Terminating!"
+               kill -9 $PIDS
+               sleep 2
+
+          else
+
+               echo "Apache-$PROJECT_NAME: Shutdown"
+               PID=false
+          fi
+
+          if [ $x -ge $MAX_SHUTDOWN_TIME ] ; then
+
+               PID=false
+               echo "Apache-$PROJECT_NAME: Failed to shutdown"
+          fi
+
+          (( x = $x + 5 ))
+
+     done
+
+     rm -f $APACHE_ROOT/logs/httpd.pid
+
+}
+
+
+function start_apache {
+
+     echo "Apache-$PROJECT_NAME: Starting"
+     get_pids {}
+
+     if [ -n "$PIDP" ] ; then
+
+          echo "Apache-$PROJECT_NAME: Already running - $PIDP"
+          exit 0
+     fi
+
+     case $1 in
+
+           start )   MODE="-DLIVE"           ;;
+           maint )   MODE="-DMAINTENANCE"    ;;
+           protect ) MODE="-DLIVE -DPROTECT" ;;
+           preupgrade ) MODE="-DPRE_UPGRADE"  ;;
+
+     esac
+
+     $HTTPD -k start -D$PROJECT_NAME -D$ENV  $MODE
+     EXIT=$?
+
+     sleep 4
+     get_pids {}
+
+     if [ -z "$PIDP" ] ; then
+
+          echo "Apache-$PROJECT_NAME: Failed to start"
+          exit 2
+     fi
+
+     echo "Apache-$PROJECT_NAME: Started - $PIDP"
+
+
+}
+
+function restart_apache {
+
+     get_pids {}
+
+     echo "Apache-$PROJECT_NAME: $1 - $PIDP"
+
+     if [ -z "$PIDP" ] ; then
+
+          echo "Apache-$PROJECT_NAME: Not running"
+          start_apache start
+          exit 0
+     fi
+
+     $HTTPD -k $1 -D$PROJECT_NAME -D$ENV -DLIVE
+     EXIT=$?
+
+     echo "Apache-$PROJECT_NAME: $1 complete"
+
+}
+
+
+
+##############
+### Execute
+###
+
+function execute {
+
+     if [ "$USER" != "$RUNAS" ] ; then
+     
+          sudo su $RUNAS -c "$0 '$@'"
+          EXIT=$?
+     else
+
+          case $ARGV in
+     
+               stop )              stop_apache {}       ;;
+               start )             start_apache start   ;;
+               restart|graceful )  restart_apache $ARGV ;;
+               maintenance|maint ) start_apache maint   ;;
+               protect )           start_apache protect ;;
+               preupgrade )        start_apache preupgrade ;;
+               configtest )        $HTTPD -t            ;;
+               * )                 usage {}             ;;
+     
+          esac
+     fi
+
+}
+
+
+###########
+### MAIN
+###
+
+check_usage 
+set_ps_cmd 
+execute "$@"
+
+exit $EXIT

@@ -1,0 +1,649 @@
+## kmorton
+## triples
+##
+
+bchill		(,bchill,)
+
+##
+## role netgroups
+##
+
+u-all		(-,,)
+u-root		bchill justin samer shu rob emmet bvowell crchien matt rschroder jelliott rkarthikeyan pbindels jthorpe bnugmanov
+u-sysadmin	u-root
+u-priv		rob emmet rschroder
+u-dev		alex amy dan ed emmet justin kenneth \
+		rob sean kevin ted ambi yilmaz matt brandon \
+		scott tinou richard kartik schoi \
+		echen jfeatheringham bmayes \
+		canderson dgp bvowell bwright rschroder jsini \
+		angie sasan mbergman dgrondin rodonnell \
+		efine lchin jcruikshank phangas abahouth pmeyers \
+		orehmane mapte lnguyen ssrinivasan ptsai nmu dybarbo oledesma \
+		sshah jbobier koality dtkachenko ecasey spal pwan hwang jrael jcapecelatro
+u-okl		alex amy auspient bchill \
+		emmet justin jelliott rkarthikeyan \
+		rob aaron auspient \
+		ted samer ben pchua richard yilmaz ambi tara \
+		matt ksharma shariq rich brandon shu \
+		percona tinou angie tlee scott gleo \
+		rmanzano echen schoi anya ecakir kartik jferris msen \
+		msingh bdobbin megan doug nisho pubudu ahayden mseiden \
+		dumeshnath kphillips jessie bmayes dgp britt khappel ascheer \
+		zrussell dflionis lisaoda jfeatheringham sasha kent bvowell dgrondin \
+		crchien slieberman erin abhatia moei \
+		mshambura kirsten jwalters dlaframboise petra schoi bwright \
+		kmorton stsai msimithraaratchy rschroder jsini nicholas james sasan shampton \
+		mbergman rodonnell christina efine lchin dinesh jpincar \
+		jcruikshank phangas abahouth pmeyers orehmane mapte elizabeth lnguyen ssrinivasan \
+		ptsai ahershey nmu dybarbo ashah jthorpe pstewart kmurphy komalley karena rhicks lmcintire \
+		rsinghai bnugmanov oledesma jwu sshah jbobier gniemczyk dtkachenko ecasey spal pwan \
+		jrael jcapecelatro hwang msima ddebow mbenevento kstransky mcartwright lting
+u-dba		percona
+u-oncall	alex emmet rob justin yilmaz angie ksharma bvowell richard bmayes kartik rschroder jelliott amy rkarthikeyan pbindels mbergman tinou jthorpe
+u-qa		rob richard ksharma angie ambi dumeshnath tlee abhatia rschroder echen karena rsinghai
+u-load		rob percona ambi rschroder tlee abhatia ksharma eyeh yilmaz dumeshnath rkarthikeyan
+u-contractors	bob wes tom sasan derek lnguyen badams eyeh chagar mpiantedosi
+u-raybeam	bob wes tom sasan derek jlevinson cmihm dflionis jferris lnguyen badams kmorton eyeh chagar mpiantedosi pstewart kmurphy komalley rhicks oledesma gniemczyk
+u-datasci		alex ptsai oledesma sshah
+u-envista	envista
+u-tools		samer echen
+u-halley	justin
+u-looker	looker
+u-dataeng	rob abahouth
+##
+## host-to-role netgroups
+##
+
+u-sac-ops-adm-01.unix.newokl.com \
+		u-sysadmin
+u-sac-ops-adm-02.unix.newokl.com \
+		u-sysadmin u-okl u-contractors
+u-sac-ops-adm-03.unix.newokl.com \
+		u-sysadmin
+u-sac-prod-web-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-03.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-04.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-05.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-06.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-07.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-08.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-09.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-10.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-11.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-12.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-13.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-14.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-15.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-16.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-17.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-web-18.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-mq-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-mq-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-app-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-db-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-db-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-db-03.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-pweb-01.unix.newokl.com \
+		u-sysadmin u-okl u-envista
+u-sac-prod-pweb-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-pweb-03.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-sac-prod-mcvm-01.unix.newokl.com \
+		u-sysadmin u-okl u-looker
+u-sac-prod-drvm-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-sac-prod-papp-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-papp-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-pdb-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-pdb-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sac-prod-pdb-03.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-sac-prod-pdb-04.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-sac-prod-dw-01.unix.newokl.com \
+		u-sysadmin u-dba
+u-sac-prod-dw-02.unix.newokl.com \
+		u-sysadmin
+u-sac-prod-dw-03.unix.newokl.com \
+		u-sysadmin
+u-sac-prod-dw-04.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-sac-prod-dw-05.unix.newokl.com \
+		u-sysadmin
+u-sac-prod-biapp-01.unix.newokl.com \
+		u-sysadmin u-raybeam
+u-sfo-ops-adm-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam u-envista u-product
+u-sfo-ops-adm-02.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam u-envista
+u-sfo-ops-debian-06.unix.newokl.com \
+		u-sysadmin
+u-sfo-ops-debian-07.unix.newokl.com \
+		u-sysadmin
+u-sfo-int-web-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-int-web-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-int-mq-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-int-mq-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-int-db-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-int-db-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-web-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-web-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-mq-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-mq-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-db-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-qa-db-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-sfo-rel-bld-01.unix.newokl.com \
+		u-sysadmin u-mbergman u-ptsai
+u-sfo-rel-bld-02.unix.newokl.com \
+		u-sysadmin
+u-ec2-ops-adm-01.unix.newokl.com \
+		u-sysadmin
+u-ec2-ops-adm-02.unix.newokl.com \
+		u-sysadmin
+u-ec2-ops-lb-01.unix.newokl.com \
+		u-sysadmin u-oncall
+u-ec2-prod-db-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-db-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-db-03.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-dbdr-01.unix.newokl.com \
+		u-sysadmin
+u-ec2-prod-mq-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-mq-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-01.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-02.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-03.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-04.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-05.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-06.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-07.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-08.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-09.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-web-10.unix.newokl.com \
+		u-sysadmin u-okl
+u-ec2-prod-biweb-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-ec2-prod-bidb-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-ec2-qa-biweb-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-ec2-qa-bidb-01.unix.newokl.com \
+		u-sysadmin u-okl u-raybeam
+u-ec2-dev-bayes-01.unix.newokl.com \
+		u-sysadmin u-dev
+u-ec2-dev-hadoop-01.unix.newokl.com \
+		u-sysadmin
+u-ec2-dev-hadoop-02.unix.newokl.com \
+		u-sysadmin
+u-ec2-dev-hadoop-03.unix.newokl.com \
+		u-sysadmin
+u-ec2-prod-hweb-01.unix.newokl.com \
+		u-sysadmin u-halley
+u-ec2-prod-hweb-02.unix.newokl.com \
+		u-sysadmin u-halley
+u-ec2-prod-hdb-01.unix.newokl.com \
+		u-sysadmin u-halley
+u-ec2-prod-hdb-02.unix.newokl.com \
+		u-sysadmin u-halley
+u-sfo-load-db-03.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-pdb-01.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-db-01.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-db-02.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-dw-01.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-dw-02.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-dw-03.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-web-01.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-web-02.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-pweb-01.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-pweb-02.unix.newokl.com \
+		u-sysadmin u-load u-raybeam u-okl
+u-sfo-load-app-01.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-hdp-01.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-hdp-02.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-hdp-03.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-drv-01.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-mq-01.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-load-mq-02.unix.newokl.com \
+		u-sysadmin u-load u-okl
+u-sfo-perf-drv-01.unix.newokl.com \
+		u-sysadmin u-load
+u-sfo-perf-web-01.unix.newokl.com \
+		u-sysadmin u-load
+u-sfo-perf-mq-01.unix.newokl.com \
+		u-sysadmin u-load
+u-sfo-perf-db-01.unix.newokl.com \
+		u-sysadmin u-load
+u-sfo-int-pweb-01.unix.newokl.com \
+		u-sysadmin u-dev
+u-sfo-int-pweb-02.unix.newokl.com \
+		u-sysadmin u-dev
+u-ec2-prod-dp-01.unix.newokl.com \
+		u-sysadmin u-dataeng
+u-ec2-prod-dslb-01.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dslb-02.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsweb-01.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsweb-02.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsredis-01.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsdb-01.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsdb-02.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsdb-03.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsdb-04.unix.newokl.com \
+		u-sysadmin u-datasci
+u-ec2-prod-dsdb-05.unix.newokl.com \
+		u-sysadmin u-datasci
+
+##
+## host triples
+##
+sac-ops-adm-01.unix.newokl.com	(sac-ops-adm-01.unix.newokl.com,,)
+sac-ops-adm-02.unix.newokl.com	(sac-ops-adm-02.unix.newokl.com,,)
+sac-ops-adm-03.unix.newokl.com	(sac-ops-adm-03.unix.newokl.com,,)
+sac-prod-web-01.unix.newokl.com		(sac-prod-web-01.unix.newokl.com,,)
+sac-prod-web-02.unix.newokl.com		(sac-prod-web-02.unix.newokl.com,,)
+sac-prod-web-03.unix.newokl.com		(sac-prod-web-03.unix.newokl.com,,)
+sac-prod-web-04.unix.newokl.com		(sac-prod-web-04.unix.newokl.com,,)
+sac-prod-web-05.unix.newokl.com		(sac-prod-web-05.unix.newokl.com,,)
+sac-prod-web-06.unix.newokl.com		(sac-prod-web-06.unix.newokl.com,,)
+sac-prod-web-07.unix.newokl.com		(sac-prod-web-07.unix.newokl.com,,)
+sac-prod-web-08.unix.newokl.com		(sac-prod-web-08.unix.newokl.com,,)
+sac-prod-web-09.unix.newokl.com		(sac-prod-web-09.unix.newokl.com,,)
+sac-prod-web-10.unix.newokl.com		(sac-prod-web-10.unix.newokl.com,,)
+sac-prod-web-11.unix.newokl.com		(sac-prod-web-11.unix.newokl.com,,)
+sac-prod-web-12.unix.newokl.com		(sac-prod-web-12.unix.newokl.com,,)
+sac-prod-web-13.unix.newokl.com		(sac-prod-web-13.unix.newokl.com,,)
+sac-prod-web-14.unix.newokl.com		(sac-prod-web-14.unix.newokl.com,,)
+sac-prod-web-15.unix.newokl.com		(sac-prod-web-15.unix.newokl.com,,)
+sac-prod-web-16.unix.newokl.com		(sac-prod-web-16.unix.newokl.com,,)
+sac-prod-web-17.unix.newokl.com		(sac-prod-web-17.unix.newokl.com,,)
+sac-prod-web-18.unix.newokl.com		(sac-prod-web-18.unix.newokl.com,,)
+sac-prod-mq-01.unix.newokl.com	(sac-prod-mq-01.unix.newokl.com,,)
+sac-prod-mq-02.unix.newokl.com	(sac-prod-mq-02.unix.newokl.com,,)
+sac-prod-app-01.unix.newokl.com	(sac-prod-app-01.unix.newokl.com,,)
+sac-prod-db-01.unix.newokl.com	(sac-prod-db-01.unix.newokl.com,,)
+sac-prod-db-02.unix.newokl.com	(sac-prod-db-02.unix.newokl.com,,)
+sac-prod-db-03.unix.newokl.com	(sac-prod-db-03.unix.newokl.com,,)
+sac-prod-pweb-01.unix.newokl.com	(sac-prod-pweb-01.unix.newokl.com,,)
+sac-prod-pweb-02.unix.newokl.com	(sac-prod-pweb-02.unix.newokl.com,,)
+sac-prod-pweb-03.unix.newokl.com	(sac-prod-pweb-03.unix.newokl.com,,)
+sac-prod-papp-01.unix.newokl.com	(sac-prod-papp-01.unix.newokl.com,,)
+sac-prod-papp-02.unix.newokl.com	(sac-prod-papp-02.unix.newokl.com,,)
+sac-prod-pdb-01.unix.newokl.com		(sac-prod-pdb-01.unix.newokl.com,,)
+sac-prod-pdb-02.unix.newokl.com		(sac-prod-pdb-02.unix.newokl.com,,)
+sac-prod-pdb-03.unix.newokl.com		(sac-prod-pdb-03.unix.newokl.com,,)
+sac-prod-pdb-04.unix.newokl.com		(sac-prod-pdb-04.unix.newokl.com,,)
+sac-prod-dw-01.unix.newokl.com		(sac-prod-dw-01.unix.newokl.com,,)
+sac-prod-dw-02.unix.newokl.com		(sac-prod-dw-02.unix.newokl.com,,)
+sac-prod-dw-03.unix.newokl.com		(sac-prod-dw-03.unix.newokl.com,,)
+sac-prod-dw-04.unix.newokl.com		(sac-prod-dw-04.unix.newokl.com,,)
+sac-prod-dw-05.unix.newokl.com		(sac-prod-dw-05.unix.newokl.com,,)
+sac-prod-drvm-01.unix.newokl.com	(sac-prod-drvm-01.unix.newokl.com,,)
+sac-prod-biapp-01.unix.newokl.com	(sac-prod-biapp-01.unix.newokl.com,,)
+sfo-ops-adm-01.unix.newokl.com		(sfo-ops-adm-01.unix.newokl.com,,)
+sfo-ops-adm-02.unix.newokl.com		(sfo-ops-adm-02.unix.newokl.com,,)
+sfo-ops-debian-06.unix.newokl.com	(sfo-ops-debian-06.unix.newokl.com,,)
+sfo-ops-debian-07.unix.newokl.com	(sfo-ops-debian-07.unix.newokl.com,,)
+sfo-rel-bld-01.unix.newokl.com		(sfo-rel-bld-01.unix.newokl.com,,)
+sfo-rel-bld-02.unix.newokl.com		(sfo-rel-bld-02.unix.newokl.com,,)
+sfo-int-web-01.unix.newokl.com		(sfo-int-web-01.unix.newokl.com,,)
+sfo-int-web-02.unix.newokl.com		(sfo-int-web-02.unix.newokl.com,,)
+sfo-int-mq-01.unix.newokl.com		(sfo-int-mq-01.unix.newokl.com,,)
+sfo-int-mq-02.unix.newokl.com		(sfo-int-mq-02.unix.newokl.com,,)
+sfo-int-db-01.unix.newokl.com		(sfo-int-db-01.unix.newokl.com,,)
+sfo-int-db-02.unix.newokl.com		(sfo-int-db-02.unix.newokl.com,,)
+sfo-qa-web-01.unix.newokl.com		(sfo-qa-web-01.unix.newokl.com,,)
+sfo-qa-web-02.unix.newokl.com		(sfo-qa-web-02.unix.newokl.com,,)
+sfo-qa-mq-01.unix.newokl.com		(sfo-qa-mq-01.unix.newokl.com,,)
+sfo-qa-mq-02.unix.newokl.com		(sfo-qa-mq-02.unix.newokl.com,,)
+sfo-qa-db-01.unix.newokl.com		(sfo-qa-db-01.unix.newokl.com,,)
+sfo-qa-db-02.unix.newokl.com		(sfo-qa-db-02.unix.newokl.com,,)
+ec2-ops-adm-01.unix.newokl.com		(ec2-ops-adm-01.unix.newokl.com,,)
+ec2-ops-adm-02.unix.newokl.com		(ec2-ops-adm-02.unix.newokl.com,,)
+ec2-ops-lb-01.unix.newokl.com		(ec2-ops-lb-01.unix.newokl.com,,)
+ec2-prod-db-01.unix.newokl.com		(ec2-prod-db-01.unix.newokl.com,,)
+ec2-prod-db-02.unix.newokl.com		(ec2-prod-db-02.unix.newokl.com,,)
+ec2-prod-dbdr-01.unix.newokl.com	(ec2-prod-dbdr-01.unix.newokl.com,,)
+ec2-prod-mq-01.unix.newokl.com		(ec2-prod-mq-01.unix.newokl.com,,)
+ec2-prod-mq-02.unix.newokl.com		(ec2-prod-mq-02.unix.newokl.com,,)
+ec2-prod-web-01.unix.newokl.com		(ec2-prod-web-01.unix.newokl.com,,)
+ec2-prod-web-02.unix.newokl.com		(ec2-prod-web-02.unix.newokl.com,,)
+ec2-prod-web-03.unix.newokl.com		(ec2-prod-web-03.unix.newokl.com,,)
+ec2-prod-web-04.unix.newokl.com		(ec2-prod-web-04.unix.newokl.com,,)
+ec2-prod-web-05.unix.newokl.com		(ec2-prod-web-05.unix.newokl.com,,)
+ec2-prod-web-06.unix.newokl.com		(ec2-prod-web-06.unix.newokl.com,,)
+ec2-prod-web-07.unix.newokl.com		(ec2-prod-web-07.unix.newokl.com,,)
+ec2-prod-web-08.unix.newokl.com		(ec2-prod-web-08.unix.newokl.com,,)
+ec2-prod-web-09.unix.newokl.com		(ec2-prod-web-09.unix.newokl.com,,)
+ec2-prod-web-10.unix.newokl.com		(ec2-prod-web-10.unix.newokl.com,,)
+ec2-prod-biweb-01.unix.newokl.com	(ec2-prod-biweb-01.unix.newokl.com,,)
+ec2-prod-bidb-01.unix.newokl.com	(ec2-prod-bidb-01.unix.newokl.com,,)
+ec2-prod-dslb-01.unix.newokl.com	(ec2-prod-dslb-01.unix.newokl.com,,)
+ec2-prod-dslb-02.unix.newokl.com	(ec2-prod-dslb-02.unix.newokl.com,,)
+ec2-prod-dsweb-01.unix.newokl.com	(ec2-prod-dsweb-01.unix.newokl.com,,)
+ec2-prod-dsweb-02.unix.newokl.com	(ec2-prod-dsweb-02.unix.newokl.com,,)
+ec2-prod-dsredis-01.unix.newokl.com	(ec2-prod-dsredis-01.unix.newokl.com,,)
+ec2-prod-dsdb-01.unix.newokl.com	(ec2-prod-dsdb-01.unix.newokl.com,,)
+ec2-prod-dsdb-02.unix.newokl.com	(ec2-prod-dsdb-02.unix.newokl.com,,)
+ec2-prod-dsdb-03.unix.newokl.com	(ec2-prod-dsdb-03.unix.newokl.com,,)
+ec2-prod-dsdb-04.unix.newokl.com	(ec2-prod-dsdb-04.unix.newokl.com,,)
+ec2-prod-dsdb-05.unix.newokl.com	(ec2-prod-dsdb-05.unix.newokl.com,,)
+ec2-qa-biweb-01.unix.newokl.com		(ec2-qa-biweb-01.unix.newokl.com,,)
+ec2-qa-bidb-01.unix.newokl.com		(ec2-qa-bidb-01.unix.newokl.com,,)
+ec2-dev-hadoop-01.unix.newokl.com	(ec2-dev-hadoop-01.unix.newokl.com,,)
+ec2-dev-hadoop-02.unix.newokl.com	(ec2-dev-hadoop-02.unix.newokl.com,,)
+ec2-dev-hadoop-03.unix.newokl.com	(ec2-dev-hadoop-03.unix.newokl.com,,)
+ec2-dev-bayes-01.unix.newokl.com	(ec2-dev-bayes-01.unix.newokl.com,,)
+ec2-prod-hweb-01.unix.newokl.com	(ec2-prod-hweb-01.unix.newokl.com,,)
+ec2-prod-hweb-02.unix.newokl.com	(ec2-prod-hweb-02.unix.newokl.com,,)
+ec2-prod-hdb-01.unix.newokl.com		(ec2-prod-hdb-01.unix.newokl.com,,)
+ec2-prod-hdb-02.unix.newokl.com		(ec2-prod-hdb-02.unix.newokl.com,,)
+ec2-prod-dp-01.unix.newokl.com		(ec2-prod-dp-01.unix.newokl.com,,)
+sfo-load-db-03.unix.newokl.com		(sfo-load-db-03.unix.newokl.com,,)
+sfo-load-pdb-01.unix.newokl.com		(sfo-load-pdb-01.unix.newokl.com,,)
+sfo-load-db-01.unix.newokl.com		(sfo-load-db-01.unix.newokl.com,,)
+sfo-load-db-02.unix.newokl.com		(sfo-load-db-02.unix.newokl.com,,)
+sfo-load-dw-01.unix.newokl.com		(sfo-load-dw-01.unix.newokl.com,,)
+sfo-load-dw-02.unix.newokl.com		(sfo-load-dw-02.unix.newokl.com,,)
+sfo-load-dw-03.unix.newokl.com		(sfo-load-dw-03.unix.newokl.com,,)
+sfo-load-web-01.unix.newokl.com		(sfo-load-web-01.unix.newokl.com,,)
+sfo-load-web-02.unix.newokl.com		(sfo-load-web-02.unix.newokl.com,,)
+sfo-load-pweb-01.unix.newokl.com	(sfo-load-pweb-01.unix.newokl.com,,)
+sfo-load-pweb-02.unix.newokl.com	(sfo-load-pweb-02.unix.newokl.com,,)
+sfo-load-app-01.unix.newokl.com		(sfo-load-app-01.unix.newokl.com,,)
+sfo-load-hdp-01.unix.newokl.com		(sfo-load-hdp-01.unix.newokl.com,,)
+sfo-load-hdp-02.unix.newokl.com		(sfo-load-hdp-02.unix.newokl.com,,)
+sfo-load-hdp-03.unix.newokl.com		(sfo-load-hdp-03.unix.newokl.com,,)
+sfo-load-drv-01.unix.newokl.com		(sfo-load-drv-01.unix.newokl.com,,)
+sfo-load-mq-01.unix.newokl.com		(sfo-load-mq-01.unix.newokl.com,,)
+sfo-load-mq-02.unix.newokl.com		(sfo-load-mq-02.unix.newokl.com,,)
+sfo-perf-drv-01.unix.newokl.com		(sfo-perf-drv-01.unix.newokl.com,,)
+sfo-perf-web-01.unix.newokl.com		(sfo-perf-web-01.unix.newokl.com,,)
+sfo-perf-mq-01.unix.newokl.com		(sfo-perf-mq-01.unix.newokl.com,,)
+sfo-perf-db-01.unix.newokl.com		(sfo-perf-db-01.unix.newokl.com,,)
+sfo-int-pweb-01.unix.newokl.com		(sfo-int-pweb-01.unix.newokl.com,,)
+sfo-int-pweb-02.unix.newokl.com		(sfo-int-pweb-02.unix.newokl.com,,)
+
+
+##
+## host groups
+##
+
+h-priv \
+	sac-ops-adm-01.unix.newokl.com \
+	sac-ops-adm-02.unix.newokl.com \
+	sac-ops-adm-03.unix.newokl.com \
+	sfo-ops-adm-01.unix.newokl.com \
+	sfo-ops-adm-02.unix.newokl.com \
+	sfo-ops-debian-06.unix.newokl.com \
+	sfo-ops-debian-07.unix.newokl.com \
+	ec2-ops-adm-01.unix.newokl.com \
+	ec2-ops-adm-02.unix.newokl.com \
+	ec2-ops-lb-01.unix.newokl.com
+
+h-prod \
+	sac-prod-web-01.unix.newokl.com \
+	sac-prod-web-02.unix.newokl.com \
+	sac-prod-web-03.unix.newokl.com \
+	sac-prod-web-04.unix.newokl.com \
+	sac-prod-web-05.unix.newokl.com \
+	sac-prod-web-06.unix.newokl.com \
+	sac-prod-web-07.unix.newokl.com \
+	sac-prod-web-08.unix.newokl.com \
+	sac-prod-web-09.unix.newokl.com \
+	sac-prod-web-10.unix.newokl.com \
+	sac-prod-web-11.unix.newokl.com \
+	sac-prod-web-12.unix.newokl.com \
+	sac-prod-web-13.unix.newokl.com \
+	sac-prod-web-14.unix.newokl.com \
+	sac-prod-web-15.unix.newokl.com \
+	sac-prod-web-16.unix.newokl.com \
+	sac-prod-web-17.unix.newokl.com \
+	sac-prod-web-18.unix.newokl.com \
+	sac-prod-mq-01.unix.newokl.com \
+	sac-prod-mq-02.unix.newokl.com \
+	sac-prod-app-01.unix.newokl.com \
+	sac-prod-db-01.unix.newokl.com \
+	sac-prod-db-02.unix.newokl.com \
+	sac-prod-db-03.unix.newokl.com \
+	sac-prod-pweb-01.unix.newokl.com \
+	sac-prod-pweb-02.unix.newokl.com \
+	sac-prod-pweb-03.unix.newokl.com \
+	sac-prod-papp-01.unix.newokl.com \
+	sac-prod-papp-02.unix.newokl.com \
+	sac-prod-pdb-01.unix.newokl.com \
+	sac-prod-pdb-02.unix.newokl.com \
+	sac-prod-pdb-03.unix.newokl.com \
+	sac-prod-pdb-04.unix.newokl.com \
+	sac-prod-dw-01.unix.newokl.com \
+	sac-prod-dw-02.unix.newokl.com \
+	sac-prod-dw-03.unix.newokl.com \
+	sac-prod-dw-04.unix.newokl.com \
+	sac-prod-dw-05.unix.newokl.com \
+	sac-prod-biapp-01.unix.newokl.com \
+	sac-prod-drvm-01.unix.newokl.com \
+	ec2-prod-db-01.unix.newokl.com \
+	ec2-prod-db-02.unix.newokl.com \
+	ec2-prod-db-03.unix.newokl.com \
+	ec2-prod-mq-01.unix.newokl.com \
+	ec2-prod-mq-02.unix.newokl.com \
+	ec2-prod-web-01.unix.newokl.com \
+	ec2-prod-web-02.unix.newokl.com \
+	ec2-prod-web-03.unix.newokl.com \
+	ec2-prod-web-04.unix.newokl.com \
+	ec2-prod-web-05.unix.newokl.com \
+	ec2-prod-web-06.unix.newokl.com \
+	ec2-prod-web-07.unix.newokl.com \
+	ec2-prod-web-08.unix.newokl.com \
+	ec2-prod-web-09.unix.newokl.com \
+	ec2-prod-web-10.unix.newokl.com \
+	ec2-prod-biweb-01.unix.newokl.com \
+	ec2-prod-bidb-01.unix.newokl.com \
+	ec2-prod-dp-01.unix.newokl.com
+
+h-tools \
+	sac-prod-pweb-01.unix.newokl.com \
+	sac-prod-pweb-02.unix.newokl.com \
+	sac-prod-pweb-03.unix.newokl.com \
+	sac-prod-papp-01.unix.newokl.com \
+	sac-prod-papp-02.unix.newokl.com \
+	sac-prod-pdb-01.unix.newokl.com \
+	sac-prod-pdb-02.unix.newokl.com
+	sac-prod-pdb-03.unix.newokl.com
+	sac-prod-pdb-04.unix.newokl.com
+
+h-tools-web \
+	sac-prod-pweb-01.unix.newokl.com \
+	sac-prod-pweb-02.unix.newokl.com \
+	sac-prod-pweb-03.unix.newokl.com
+
+h-db \
+	sac-prod-db-01.unix.newokl.com \
+	sac-prod-db-02.unix.newokl.com \
+	sac-prod-db-03.unix.newokl.com \
+	sac-prod-pdb-01.unix.newokl.com \
+	sac-prod-pdb-02.unix.newokl.com \
+	sac-prod-pdb-03.unix.newokl.com \
+	sac-prod-pdb-04.unix.newokl.com \
+	ec2-prod-db-01.unix.newokl.com \
+	ec2-prod-db-02.unix.newokl.com \
+	ec2-prod-db-03.unix.newokl.com \
+	ec2-prod-bidb-01.unix.newokl.com \
+	ec2-prod-dbdr-01.unix.newokl.com
+
+h-bi \
+	ec2-prod-bidb-01.unix.newokl.com \
+	ec2-prod-biweb-01.unix.newokl.com \
+	ec2-qa-bidb-01.unix.newokl.com \
+	ec2-qa-biweb-01.unix.newokl.com \
+	sfo-load-pweb-01.unix.newokl.com \
+	sfo-load-pweb-02.unix.newokl.com \
+	sfo-load-db-01.unix.newokl.com \
+	sfo-load-db-02.unix.newokl.com \
+	sfo-load-db-03.unix.newokl.com \
+	sfo-load-pdb-01.unix.newokl.com \
+	sac-prod-pweb-03.unix.newokl.com \
+	sac-prod-pdb-03.unix.newokl.com \
+	sac-prod-pdb-04.unix.newokl.com \
+	sac-prod-db-03.unix.newokl.com \
+	sac-prod-drvm-01.unix.newokl.com \
+	sac-prod-biapp-01.unix.newokl.com \
+	sac-prod-dw-01.unix.newokl.com \
+	sac-prod-dw-02.unix.newokl.com \
+	sac-prod-dw-03.unix.newokl.com \
+	sac-prod-dw-04.unix.newokl.com \
+	sac-prod-dw-05.unix.newokl.com
+
+
+h-rel \
+	sfo-rel-bld-01.unix.newokl.com \
+	sfo-rel-bld-02.unix.newokl.com
+
+h-int \
+	sfo-int-web-01.unix.newokl.com \
+	sfo-int-web-02.unix.newokl.com \
+	sfo-int-mq-01.unix.newokl.com \
+	sfo-int-mq-02.unix.newokl.com \
+	sfo-int-db-01.unix.newokl.com \
+	sfo-int-db-02.unix.newokl.com \
+	ec2-dev-bayes-01.unix.newokl.com
+
+h-qa \
+	sfo-qa-web-01.unix.newokl.com \
+	sfo-qa-web-02.unix.newokl.com \
+	sfo-qa-mq-01.unix.newokl.com \
+	sfo-qa-mq-02.unix.newokl.com \
+	sfo-qa-db-01.unix.newokl.com \
+	sfo-qa-db-02.unix.newokl.com \
+	sfo-load-db-03.unix.newokl.com \
+	sfo-load-pdb-01.unix.newokl.com \
+	sfo-load-db-01.unix.newokl.com \
+	sfo-load-db-02.unix.newokl.com
+
+h-load \
+	sfo-rel-bld-01.unix.newokl.com \
+	sfo-load-web-01.unix.newokl.com \
+	sfo-load-web-02.unix.newokl.com \
+	sfo-load-pweb-01.unix.newokl.com \
+	sfo-load-pweb-02.unix.newokl.com \
+	sfo-load-app-01.unix.newokl.com \
+	sfo-load-db-01.unix.newokl.com \
+	sfo-load-db-02.unix.newokl.com \
+	sfo-load-db-03.unix.newokl.com \
+	sfo-load-pdb-01.unix.newokl.com \
+	sfo-load-dw-01.unix.newokl.com \
+	sfo-load-dw-02.unix.newokl.com \
+	sfo-load-dw-03.unix.newokl.com \
+	sfo-load-hdp-01.unix.newokl.com \
+	sfo-load-hdp-02.unix.newokl.com \
+	sfo-load-hdp-03.unix.newokl.com \
+	sfo-load-drv-01.unix.newokl.com \
+	sfo-load-mq-01.unix.newokl.com \
+	sfo-load-mq-02.unix.newokl.com \
+	sfo-perf-drv-01.unix.newokl.com \
+	sfo-perf-web-01.unix.newokl.com \
+	sfo-perf-mq-01.unix.newokl.com \
+	sfo-perf-db-01.unix.newokl.com \
+	sfo-int-mq-01.unix.newokl.com \
+	sfo-int-mq-02.unix.newokl.com \
+	sfo-int-pweb-01.unix.newokl.com \
+	sfo-int-pweb-02.unix.newokl.com
+
+h-halley \
+	ec2-prod-hweb-01.unix.newokl.com \
+	ec2-prod-hweb-02.unix.newokl.com \
+	ec2-prod-hdb-01.unix.newokl.com \
+	ec2-prod-hdb-02.unix.newokl.com
+
+h-dataeng \
+	ec2-prod-dp-01.unix.newokl.com
+
+h-datasci \
+	ec2-prod-dslb-01.unix.newokl.com \
+	ec2-prod-dslb-02.unix.newokl.com \
+	ec2-prod-dsweb-01.unix.newokl.com \
+	ec2-prod-dsweb-02.unix.newokl.com \
+	ec2-prod-dsredis-01.unix.newokl.com \
+	ec2-prod-dsdb-01.unix.newokl.com \
+	ec2-prod-dsdb-02.unix.newokl.com \
+	ec2-prod-dsdb-03.unix.newokl.com \
+	ec2-prod-dsdb-04.unix.newokl.com \
+	ec2-prod-dsdb-05.unix.newokl.com

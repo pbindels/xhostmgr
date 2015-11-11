@@ -1,0 +1,248 @@
+@import "bootstrap";
+
+/*universal */
+
+html {
+  margin-left: 30px;
+  overflow-y: scroll;
+}
+
+body {
+  padding-top: 60px;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+}
+
+.center h1 {
+  margin-bottom: 10px;
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  //text-align: center;
+}
+
+h2 {
+  font-size: 1.7em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: #999;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+/* header */
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+#logo:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+.text_box_label {
+  //	    background-color: #20C7C2;
+  border-radius: 3px 3px 3px 3px;
+  color: #000605;
+  font-size: 11.75px;
+  font-weight: bold;
+  padding: 1px 3px 2px;
+}
+
+.text_label2 {
+  display: inline;
+  color: #000605;
+  font-weight: bold;
+}
+
+.actions {
+  //	    background-color: #20C7C2;
+  border-radius: 3px 3px 3px 3px;
+  color: #000605;
+  font-size: 11.75px;
+  font-weight: bold;
+  padding: 1px 3px 2px;
+}
+
+table {
+  border-collapse: collapse;
+}
+table.imagetable {
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  color:#333333;
+  border-width: 1px;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable tr.clicked {
+  background-color: #ff0000;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+  font-weight: bold;
+  font-style: italic;
+}
+table.imagetable th {
+  background:#b5cfd2 url('cell-blue.jpg');
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable .odd td {
+  background:#dcddc0  url('cell-grey.jpg');
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable .even td {
+  background:#dcddc0  url('cell-blue.jpg');
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.imagetable .node:hover td {
+  //background:#cccccc  url('cell-blue.jpg');
+  background: #f79f81;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+  //font-weight: bold;
+}
+
+
+table.imagetable tr.clicked {
+  background-color: #ff0000;
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #999999;
+  border-collapse: collapse;
+  font-weight: bold;
+  font-style: italic;
+}
+.current {
+  padding-right: 20px;
+  //padding-top: 30px;
+  background-repeat: no-repeat;
+  background-position: right center ;
+  background-color:    #b5cfd2;
+
+  &:hover {
+    //  color: #53A95E;
+//    background-color: #F8FBEF;
+    background-color:    #b5cfd2;
+
+  }
+}
+
+.asc {
+  background-image: url(up_arrow.gif);
+  //background-color:    #F8FBEF;
+  background-color:    #b5cfd2;
+}
+
+.desc {
+  background-image: url(down_arrow.gif);
+  background-color:    #b5cfd2;
+}
+
+a.link_color{
+  //      color: #53A95E;
+  //	background-color: #F1F9F2;
+  &:hover {
+    //  color: #53A95E;
+//    background-color: #F8FBEF;
+    background-color:    #b5cfd2;
+  }
+}
+
+#popup {
+  height: 60px;
+  width: 200px;
+  text-align: center;
+  vertical-align:middle;
+  background-color: cornflowerblue;
+  color: white;
+  display: none;
+  padding-top: 8px;
+  position: absolute;
+}
+
+#new {
+  height: 60px;
+  width: 200px;
+  text-align: center;
+  vertical-align:middle;
+  background-color: cornflowerblue;
+  color: white;
+  display: none;
+  padding-top: 8px;
+  position: absolute;
+}
+
+#loc-popup {
+  height: 60px;
+  width: 200px;
+  text-align: center;
+  vertical-align:middle;
+  background-color: cornflowerblue;
+  color: white;
+  display: none;
+  padding-top: 8px;
+  position: absolute;
+}
+
+#disable-popup {
+  height: 70px;
+  width: 200px;
+  text-align: center;
+  vertical-align:middle;
+  background-color: cornflowerblue;
+  color: white;
+  display: none;
+  padding-top: 8px;
+  position: absolute;
+}

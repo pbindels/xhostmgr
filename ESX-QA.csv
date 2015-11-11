@@ -1,0 +1,51 @@
+sac-eng-ops-esx-11 (QA01),,,,,,,,,
+Host,IP address,Cent0S,CPU,RAM,Disk,Console,UserGroup,HostGroup,Network
+sac-qa-abtest-web-01,10.68.33.20,5,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-apiserver-web-01,10.68.33.30,5,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-babar-web-01,10.68.33.40,6,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-catalog-web-01,10.68.33.50,6,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-catfin-web-01,10.68.33.60,6,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-color-web-01,10.68.33.80,6,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-elysium-web-01,10.68.33.90,6,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-inventory-web-01,10.68.33.100,6,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-mktapp-web-01,10.68.33.110,5,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-mobile-web-01,10.68.33.120,5,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-nexus-web-01,10.68.33.130,5,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-nexus-rsq-01,10.68.33.140,5,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-avail-web-01,10.68.33.150,5,4,4,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-searchpro-web-01,10.68.33.160,5,8,12,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-searchpro-data-01,10.68.64.30,5,8,12,150,sac-eng-ops-esx-12,dev:sysadmin,dev-root,db
+sac-qa-imp-web-01,10.68.33.170,6,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-stor-web-01,10.68.33.180,5,8,12,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-stor-mq-01,10.68.33.190,5,8,12,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-stor-db-01,10.68.64.50,6,8,16,250,sac-eng-ops-esx-12,dev:sysadmin,dev-root,db
+sac-qa-vp-web-01,10.68.33.200,5,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-vp-rsq-01,10.68.33.210,5,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+sac-qa-soa-web-01,10.68.33.220,6,8,8,100,sac-eng-ops-esx-12,dev:sysadmin,dev-root,app
+,,,,,,,,,
+,,,,,,,,,
+,,,,,,,,,
+sac-eng-ops-esx-12 (QA02),,,,,,,,,
+Host,IP address,Cent0S,CPU,RAM,Disk,Console,UserGroup,HostGroup,Network
+sac-qa-abtest-web-02,10.68.33.21,5,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-apiserver-web-02,10.68.33.31,5,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-babar-web-02,10.68.33.41,6,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-catalog-web-02,10.68.33.51,6,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-catfin-web-02,10.68.33.61,6,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-color-web-02,10.68.33.81,6,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-elysium-web-02,10.68.33.91,6,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-inventory-web-02,10.68.33.101,6,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-mktapp-web-02,10.68.33.111,5,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-mobile-web-02,10.68.33.121,5,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-nexus-web-02,10.68.33.131,5,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-nexus-rsq-02,10.68.33.141,5,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-avail-web-02,10.68.33.151,5,4,4,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-searchpro-web-02,10.68.33.161,5,8,12,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-searchpro-data-02,10.68.64.31,5,8,12,150,sac-eng-ops-esx-13,dev:sysadmin,dev-root,db
+sac-qa-imp-web-02,10.68.33.171,6,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-stor-web-02,10.68.33.181,5,8,12,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-stor-mq-02,10.68.33.191,5,8,12,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-stor-db-02,10.68.64.51,6,8,16,250,sac-eng-ops-esx-13,dev:sysadmin,dev-root,db
+sac-qa-vp-web-02,10.68.33.201,5,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-vp-rsq-02,10.68.33.211,5,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app
+sac-qa-soa-web-02,10.68.33.221,6,8,8,100,sac-eng-ops-esx-13,dev:sysadmin,dev-root,app

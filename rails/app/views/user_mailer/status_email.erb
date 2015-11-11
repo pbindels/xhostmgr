@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+  <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+</head>
+<body>
+<h1>Host &quot;<%= @host.name.gsub(/\..*$/,'') %> &quot;  has been created by <%= @login %>!</h1>
+
+  A new host has been created via the hostmgr:
+  <br>
+  Host Name: <a href="<%=@site_root%>/hosts/<%=@host.id%>"><%= @host.name %></a>
+  <br>
+  Created by: <%= @login %>
+
+
+<table border="1" cellpadding="7">
+  <caption><b>Host Info</b></caption>
+  <th>Attribute</th>
+  <th>Value</th>
+  <tr align="center"><td><b>Host ID</b></td></td><td><%= @host.id %></td></tr>
+  <tr align="center"><td><b>Host Name</b></td><td><a href="<%=@site_root%>/hosts/<%=@host.id%>"><%= @host.name %></a></td></tr>
+  <tr align="center"><td><b>Ip Address</b></td><td><%= @host.ipaddr %></td> </tr>
+  <tr align="center"><td><b>Mac Address</b></td><td><%= @host.macaddr %></td> </tr>
+  <tr align="center"><td><b>Location</b></td><td><%= @host.location %></td> </tr>
+  <tr align="center"><td><b>Console Name</b></td><td><%= @host.con_name %></td> </tr>
+  <tr align="center"><td><b>Console IP Address</b></td><td><%= @host.con_ipaddr %></td> </tr>
+  <tr align="center"><td><b>Console Mac Address</b></td><td><%= @host.con_macaddr %></td>  </tr>
+  <tr align="center"><td><b>User Groups</b></td><td><%= @host.user_groups %></td>  </tr>
+  <tr align="center"><td><b>Host Groups</b></td><td><%= @host.host_groups %></td>  </tr>
+  <tr align="center"><td><b>Environment</b></td><td><%= @host.environment %></td>  </tr>
+  <tr align="center"><td><b>Role</b></td><td><%= @host.hostrole %></td>  </tr>
+  <tr align="center"><td><b>Product</b></td><td><%= @host.product %></td>   </tr>
+  <tr align="center"><td><b>OS Version</b></td><td><%= @host.os_version%></td>  </tr>
+  <tr align="center"><td><b>Name Server</b></td><td><%= @host.name_server%></td>  </tr>
+  <tr align="center"><td><b>Boot Server</b></td><td><%= @host.boot_server%></td>  </tr>
+  <tr align="center"><td><b>Gateway</b></td><td><%= @host.gateway%></td> </tr>
+  <tr align="center"><td><b>Netmask</b></td><td><%= @host.netmask%></td>  </tr>
+  <tr align="center"><td><b>KS regen</b></td><td><%= @host.ks_regen%></td>   </tr>
+  <tr align="center"><td><b>Is_IPMI</b></td><td><%= @host.is_ipmi%></td>  </tr>
+  <tr align="center"><td><b>Root disk</b></td><td><%= @host.root_disk%></td>  </tr>
+  <tr align="center"><td><b>Serial Number</b></td><td><%= @host.serial_number %></td> </tr>
+  <tr align="center"><td><b>ESX Host</b></td><td><%= @host.esx_host %></td> </tr>
+  <tr align="center"><td><b>Host Type</b></td><td><%= @host.host_type %></td> </tr>
+  <tr align="center"><td><b>Physical Location</b></td><td><%= @host.physical_location %></td> </tr>
+</table>
+
+<p>If you have any issues contact NetOps: <%= @user %>!</p>
+
+</body>
+</html>

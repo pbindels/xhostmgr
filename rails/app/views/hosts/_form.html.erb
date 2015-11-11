@@ -1,0 +1,350 @@
+<%= form_for(@host) do |f| %>
+    <% if @host.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@host.errors.count, "error") %> prohibited this host from being saved:</h2>
+
+          <ul>
+            <% @host.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <!--
+
+    <%= puts @all_environments %>
+
+    <div class ="field99">  <br>
+      <%= f.select(:os_version, options_for_select(@all_os_versions.values, selected: @host.os_version, :disabled => "Debian-6.0.6-amd64"),
+                   {:prompt => "Select An OS Type/Version"}, {:class => "text_box_label"}) %>
+    </div>
+     -->
+    <table cellpadding=5 >
+      <tr>
+      <td>
+          <b>Generate Hostname:</b>
+        </td>
+        </tr>
+
+      <tr>
+      <td>
+
+     <% if params[:action] == "edit" %>
+            <% @host = Host.find(params[:id]) %>
+    <% end %>
+    <div class ="field9999">
+        <%= select_tag(:location, options_for_select(@all_locations, params[:action]=="edit" ? @location_region_map[@host.location] : ""), {:prompt => "Select Location", :class => "text_box_label"})%>
+        <%= label_tag(:location, "")%>
+      </div>
+        </td>
+
+      <td>
+    <div class ="field9999">
+      <%= select_tag(:environment, options_for_select(@all_environments.sort, params[:action]=="edit" ? @host.environment : ""), {:prompt => "Select Environment", :class => "text_box_label"})%>
+      <%= label_tag(:environment, "")%>
+    </div>
+      </td>
+
+      <td>
+
+    <% if @host.product != "NA" %>
+    <div class ="field9999">
+      <%= select_tag(:product, options_for_select(Product.all.map{ |c| c.name}.sort, params[:action]=="edit" ? @host.product : ""), {:prompt => "Select Product", :class => "text_box_label"})%>
+      <%= label_tag(:product, "")%>
+    </div>
+      </td>
+     <% end %>
+      <td>
+    <div class ="field9999">
+      <%= select_tag(:hostrole, options_for_select(Role.all.map{ |c| c.name}.sort{|a,b| b <=> a}, params[:action]=="edit" ? @host.hostrole : ""), {:prompt => "Select Host Role", :class => "text_box_label"})%>
+      <%= label_tag(:hostrole, "")%>
+    </div>
+      </td>
+
+      <td>
+    <div class ="field9999">
+      <% if params[:action] == "edit" %>
+          <% inst = @host.name =~ /.*-(.*?)\.unix\.newokl\.com/ ? $1 : "" %>
+      <% end %>
+      <%  instances=*(1..30) %>
+      <% instances = instances.map {|num| (num<10 ? "0#{num}" : num)} %>
+      <%= select_tag(:instance, options_for_select(instances, params[:action] == "edit" ? inst : ""), {:prompt => "Select Instance", :class => "text_box_label"})%>
+      <%= label_tag(:instance, "")%>
+    </div>
+     </td>
+      </tr>
+
+      <tr>
+        <td>
+          <div class="checkbox_manual">
+            <%= f.check_box :manual_host, {checked: false, disabled: false}%> &nbsp
+            <%= f.label "Enter Hostname Manually", "", :class => "text_label2"%><p>
+          </div>
+        </td>
+      </tr>
+
+      <tr><td>
+      <div class="focus_row_host">
+      <b></b><%= f.label :name, "Host Name:", class: "text_box_label" %></b>
+      <%= f.text_field :name %>
+    </div>
+      </td></tr>
+      </table>
+    <!--( location-environment-product-role-instance , i.e. sac-prod-ds-web-01 ) -->
+
+
+    <div class="focus_row_new">  <br>
+      <b><%= f.label :ipaddr, "IP Address:", class: "text_box_label" %></b>
+      <%= f.text_field :ipaddr %>
+    </div>
+
+    <div class="focus_row">   <br>
+      <%= f.label :macaddr, "Mac Address:", class: "text_box_label" %>
+      <%= f.text_field :macaddr %>
+    </div>
+
+    <br>
+
+    <!-- Begin Device Type Selection -->
+    <div class = "select_device"  >
+      <%= f.select(:host_type, options_for_select(HostType.all.map{|c| c.name}.sort, selected: @host.host_type, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Platform Type"}, {:class => "text_box_label"}) %>
+    </div>
+
+    <!-- Select physical ESX host" -->
+
+    <div class = "show_esx_host"  >
+      <%= f.select(:esx_host, options_for_select(@all_esx.map{|c| c.name.gsub(/\.unix\.newokl\.com/,'')}.sort, selected: @host.esx_host), {:prompt => "Select ESX Host"}, {:class => "text_box_label"}) %>
+    </div>
+
+    <div class ="enter_physical_location">
+      <table>
+      <tr>
+        <td>
+          <div class id="select_geo_location">
+            <% geo_locations = ["sac", "sfo", "nyc", "la"] %>
+            <%= f.select(:geo_location, options_for_select(geo_locations, selected: @host.geo_location, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Geographic Location"}, {:class => "text_box_label"}) %>
+          </div>
+        </td>
+
+        <td>
+          <% cages=*(1..60) %>
+          <% cages = cages.map {|num| (num<10 ? "0#{num}" : num)} %>
+          <% @host.cage.to_i < 10 ? sel = "0#{@host.cage}" : sel = @host.cage %>
+          <%= f.select(:cage, options_for_select(cages, selected: sel, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Cage"}, {:class => "text_box_label"}) %>
+        </td>
+
+        <td>
+          <%  racks=*(1..60) %>
+          <% racks = racks.map {|num| (num<10 ? "0#{num}" : num)} %>
+          <% @host.rack.to_i < 10 ? sel = "0#{@host.rack}" : sel = @host.rack %>
+          <%= f.select(:rack, options_for_select(racks, selected: sel, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Rack"}, {:class => "text_box_label"}) %>
+        </td>
+
+        <td>
+          <%  units=*(1..60) %>
+          <% units = units.map {|num| (num<10 ? "0#{num}" : num)} %>
+          <% @host.start_unit.to_i < 10 ? sel = "0#{@host.start_unit}" : sel = @host.start_unit %>
+          <%= f.select(:start_unit, options_for_select(units, selected: sel, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Starting Unit"}, {:class => "text_box_label"}) %>
+        </td>
+
+        <td>
+          <%  unit_range=*(1..60) %>
+          <%= f.select(:unit_range, options_for_select(unit_range, selected: @host.unit_range, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select Unit Range"}, {:class => "text_box_label"}) %>
+        </td>
+        <td>
+          <div id="loc" ><img src='/assets/help_small.gif'></div> <div id='loc-popup' style="float:right">Physical Rack Location (Area:Cage:Rack:UnitRange i.e. SAC:C01:R01:U1-2)</div>
+        </td>
+
+      </tr>
+      </table>
+    </div>
+    <!-- End Device Type Selection
+
+
+
+
+
+      <!--
+      <div class="radio1">
+        <div style="display:inline">
+
+        <%= f.radio_button :is_ipmi, true, :checked => true %> <%=  f.label :is_ipmi, "Yes" %>
+        <%= f.radio_button :is_ipmi, false %> <%=  f.label :is_ipmi, "No" %>
+      </div>
+    </div>
+
+
+    <%= radio_button_tag(:is_vm, "true", :checked => false) %>
+    <%= label_tag(:is_vm, "Yes") %>
+     -->
+    <br>
+    <div class="check2">
+      <%= f.check_box :synto, {checked: (@host.synto != nil ? @host.synto : true) }%>&nbsp
+      <%= f.label "Synto managed host?", "", :class => "text_label2"%>
+    </div>
+
+    <br>
+    <div class="check2">
+      <%= f.check_box :ks_regen, {checked: (@host.ks_regen != nil ? @host.ks_regen : true) }%>&nbsp
+      <%= f.label "Regenerate kick start files for this host?", "", :class => "text_label2"%>
+    </div>
+
+    <br>
+
+    <%= javascript_tag do %>
+        window.ipmi = '<%=  @host.is_ipmi %>';
+    <% end %>
+
+    <div class="radio1">
+      <%= f.check_box :is_ipmi, {checked: (@host.is_ipmi  ? true : false ), sel: (@host.is_ipmi ? true : false) }%>&nbsp
+      <%= f.label "IPMI managed host?", "", :class => "text_label2"%>
+    </div>
+
+    <div class="focus_row1">  <br>
+      <b></b><%= f.label :con_ipaddr, "Console IP Address:", class: "text_box_label" %></b>
+      <%= f.text_field :con_ipaddr %>
+    </div>
+
+    <div class="focus_row2">
+      <%= f.label :con_macaddr, "Console Mac Address:", class: "text_box_label" %>
+      <%= f.text_field :con_macaddr %>
+    </div>
+
+    <div class="focus_row3">
+      <br>
+      <b></b><%= f.label :con_name, "Console Host Name:", class: "text_box_label" %></b>
+      <%= f.text_field :con_name %>
+    </div>
+
+
+    <% if params[:action] == "edit" %>
+      <%  if @host.con_name =~ /([^.]*?)(\..*$)/ %>
+         <% con_domain = $2 %>
+      <% end %>
+    <% else %>
+      <% con_domain = ".newokl.com" %>
+    <% end %>
+
+    <table>
+      <tr>
+        <td>
+          <div class="focus_row4">
+            <%= label :con_domain, "Console Domain:", class: "text_box_label" %>
+            <%= text_field :con_domain, :con_domain,  value: con_domain %>
+          </div>
+        </td>
+        <td>
+          <div id="newuser" ><img src='/assets/help_small.gif'></div> <div id='new' style="float:right">Leave as .newokl.com unless you have confirmed with Brian Hill.</div>
+        </td>
+      </tr>
+    </table>
+
+    <table>
+      <tr>
+      <td>
+        <div class="focus_row" style="float:left">
+          <b><%= f.label :root_disk, "Root Disk:", class: "text_box_label" %></b>
+          <%= f.text_field :root_disk %>
+        </div>
+       </td>
+       <td>
+         <div id="user"><img src='/assets/help_small.gif'></div> <div id='popup' style="float:right">Value for --ondisk.  Can be blank or have a value.  For example: sda</div>
+       </td>
+       </tr>
+    </table>
+
+    <div class="focus_row">   <br>
+      <%= f.label :serial_number, "Serial Number:", class: "text_box_label" %>
+      <%= f.text_field :serial_number %>
+    </div>
+
+    <div class ="os_version">  <br>
+      <%= f.select(:os_version, options_for_select(@all_os_versions.values, selected: @host.os_version, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select An OS Type/Version"}, {:class => "text_box_label"}) %>
+      <!--
+      <%= select_tag(params[:os_version], options_for_select(@all_os_versions.values, :disabled => "Debian-6.0.6-amd64"), {:prompt => "Select An OS Type/Version", :class => "text_box_label"})%>
+      <%= label_tag(params[:os_version], "")%>
+      -->
+    </div>
+
+    <div class = "redhat">
+    <b><%= f.label :redhat_license, "Redhat License:", class: "text_box_label" %></b>
+       <%= f.text_field :redhat_license %>
+    </div>
+
+    <!--
+    <div class ="field99">  <br>
+      <%= f.select(:location, options_for_select(@all_locations),  {:prompt => "Select Host Location"}, {:class => "text_box_label"})%>
+    </div>
+    -->
+
+    <!-- These will be pulled from the hostname entered
+    <div class ="field99">  <br>
+      <%= select_tag(:environment, options_for_select(@all_environments), {:prompt => "Select Environment", :class => "text_box_label"})%>
+      <%= label_tag(:environment, "")%>
+    </div>
+
+    <div class ="field99">  <br>
+      <%= select_tag(:product, options_for_select(@all_products), {:prompt => "Select Product Type", :class => "text_box_label"})%>
+      <%= label_tag(:product, "")%>
+    </div>
+
+    <div class ="field99">  <br>
+      <%= select_tag(:hostrole, options_for_select(@all_host_roles), {:prompt => "Select Host Role", :class => "text_box_label"})%>
+      <%= label_tag(:hostrole, "")%>
+    </div>
+     -->
+    <script>document.getElementsByClassName("text_box_label")[0].focus()</script>
+    <% params[:user_groups] = @host.user_groups %>
+    <% if params[:user_groups] == nil %>
+      <% params[:user_groups] = [ "u-sysadmin" ] %>
+    <% end %>
+    <div class accesskey="form_row">
+      <label_tag="user_groups[]"><b>User Groups:</b></label>
+      <% @all_user_groups.each do |group| %>
+          <!--
+      <br>&nbsp;&nbsp;<%= check_box_tag 'user_groups[]', group, (params[:user_groups] || {}).include?(group), :disabled => (params[:user_groups] || {}).include?(group)  %>
+      -->
+          <br>&nbsp;&nbsp;<%= check_box_tag 'user_groups[]', group, (params[:user_groups] || {}).include?(group)  %>
+          <%=  group %>
+      <% end %>
+    </div>
+    <br>
+
+
+    <script>document.getElementsByClassName("text_box_label")[0].focus()</script>
+    <% params[:host_groups] = @host.host_groups %>
+    <% if params[:host_groups] == nil %>
+      <% params[:host_groups] = [ "prod" ] %>
+    <% end  %>
+    <div class accesskey="form_row">
+      <label_tag="host_groups[]"><b>Host Groups:</b></label>
+      <% @all_host_groups.sort.each do |group| %>
+          <!--
+      <br>&nbsp;&nbsp;<%= check_box_tag 'host_groups[]', group, (params[:host_groups] || {}).include?(group), :disabled => (params[:host_groups] || {}).include?(group)  %>
+      -->
+          <br>&nbsp;&nbsp;<%= check_box_tag 'host_groups[]', group, (params[:host_groups] || {}).include?(group)  %>
+          <%=  group %>
+      <% end %>
+    </div>
+    <br>
+
+    <table>
+      <tr>
+        <td>
+          <div class="check2">
+          <%= f.check_box :disabled, {checked: (@host.disabled != nil ? @host.disabled : false) }%>&nbsp
+          <%= f.label "Inactive", "", :class => "text_label2"%>
+        </div>
+        </td>
+        <td>
+          <div id="disable" ><img src='/assets/help_small.gif'></div> <div id='disable-popup' style="float:right">Disabling, adds the host to the DB but does not add the host to any system related files.</div>
+        </td>
+      </tr>
+    </table>
+    <br>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>

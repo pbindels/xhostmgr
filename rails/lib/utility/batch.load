@@ -1,0 +1,3 @@
+#hostname,ipaddr,mac,con_ipaddr,con_mac,os,serial,ksregen,is_ipmi,ugroups,hgroups
+sfo-prod-sf-web-56,10.110.3.56,AA-BB-CC-DD-EE-FG,10.110.3.156,GG-HH-II-JJ-KK-LM,CentOS-5.9-x86_64,serialnumber78,true,true,sysadmin:okl,qa:load
+sfo-prod-sf-web-55,10.110.3.55,AA-BB-CC-DD-EE-FG,10.110.3.155,GG-HH-II-JJ-KK-LM,CentOS-5.9-x86_64,serialnumber78,true,true,sysadmin:okl,qa:load
